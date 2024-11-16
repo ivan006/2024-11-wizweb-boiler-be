@@ -20,8 +20,7 @@ class AuthenticatedSessionController extends Controller
         // Authenticate the user
         $request->authenticate();
 
-        // Retrieve the authenticated user with family memberships
-        $user = $request->user()->load(['family_memberships', 'primary_family']);
+        $user = $request->user();
 
         // Check if the user's email is verified
         if (is_null($user->email_verified_at)) {
