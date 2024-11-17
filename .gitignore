@@ -18,4 +18,14 @@ yarn-error.log
 /.idea
 /.vscode
 /vuex-orm-models
-/resources/js
+
+/resources/js/controllers/*
+!/resources/js/controllers/*.gitkeep
+/resources/js/models/*
+!/resources/js/models/*.gitkeep
+/resources/js/router/*
+!/resources/js/router/*.gitkeep
+/resources/js/store/*
+!/resources/js/store/*.gitkeep
+/resources/js/views/*
+!/resources/js/views/*.gitkeep
