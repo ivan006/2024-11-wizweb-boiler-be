@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use QuicklistsOrmApi\OrmApiBaseModel;
+use WizwebBe\OrmApiBaseModel;
 
 class User extends OrmApiBaseModel
 {
