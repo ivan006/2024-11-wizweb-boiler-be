@@ -36,13 +36,21 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        // Trigger email verification notification
-        $user->sendEmailVerificationNotification();
+        // Check the environment
+        if (app()->environment('local')) {
+            // Automatically mark the email as verified in local environment
+            $user->markEmailAsVerified();
+        } else {
+            // Send email verification notification in non-local environments
+            $user->sendEmailVerificationNotification();
+        }
 
-        // Return a response indicating that they need to verify their email
+        // Return a response indicating the result
         return response()->json([
             'user' => $user,
-            'message' => 'Registration successful! Please verify your email to complete the registration.',
+            'message' => app()->environment('local')
+                ? 'Registration successful! Email automatically verified (local environment).'
+                : 'Registration successful! Please verify your email to complete the registration.',
         ]);
     }
 }
